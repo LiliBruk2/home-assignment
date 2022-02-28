@@ -1,0 +1,43 @@
+
+
+<html>
+<head>
+  <title>{$title}</title>
+</head>
+<body>
+{include file='page_header.tpl'}
+
+
+Hello {$contact.first_name|default:'Friend'},
+
+
+{$coupons = ['Multi150','Lenses60','designer40']}
+{$from = 0}
+{$to = 2}
+
+{if $has coupon && $contact.gender == 'male' && $contact.age > 21 }
+ Grab yourself a beer and some glasses with an 50% off NOW !
+ 
+ {else $contact.gender == 'male' && $contact.age > 21}
+  Grab yourself a beer and some glasses NOW !.
+  
+  {if $contact.gender == 'female' && $contact.age > 21 && $has coupons }
+  Grab yourself a pair of new glasses from out latest collection 50% OFF.
+  
+    {if $contact.gender == 'female' && $contact.age > 21}
+  Grab yourself a pair of new glasses from out latest collection.
+  
+  
+    {elseif $contact.gender == 'female' && $contact.age > 21}
+  Grab yourself a pair of new glasses from out latest collection.
+  
+{else}
+  You are never too young for some new glasses, check out our new YANG collection.
+{/if}
+
+ 
+{include file="$tpl_name.tpl"}
+
+{include file='page_footer.tpl'}
+</body>
+</html>
